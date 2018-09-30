@@ -13,60 +13,61 @@ $ npm run dev
 
 # shema文件，并创建dataSource
 下面是schema文件内容，贴到appsync控制台即可。
-input CreateTaskInput {
-	id: ID!
-	name: String!
-	completed: Boolean!
-}
 
-input DeleteTaskInput {
-	id: ID!
-}
+    input CreateTaskInput {
+      id: ID!
+      name: String!
+      completed: Boolean!
+    }
 
-type Mutation {
-	createTask(input: CreateTaskInput!): Task
-	updateTask(input: UpdateTaskInput!): Task
-	deleteTask(input: DeleteTaskInput!): Task
-}
+    input DeleteTaskInput {
+      id: ID!
+    }
 
-type Query {
-	do(id: ID!): Task
-	getTask(id: ID!): Task
-	listTasks(first: Int, after: String): TaskConnection
-}
+    type Mutation {
+      createTask(input: CreateTaskInput!): Task
+      updateTask(input: UpdateTaskInput!): Task
+      deleteTask(input: DeleteTaskInput!): Task
+    }
 
-type Subscription {
-	onCreateTask(id: ID, name: String, completed: Boolean): Task
-		@aws_subscribe(mutations: ["createTask"])
-	onUpdateTask(id: ID, name: String, completed: Boolean): Task
-		@aws_subscribe(mutations: ["updateTask"])
-	onDeleteTask(id: ID, name: String, completed: Boolean): Task
-		@aws_subscribe(mutations: ["deleteTask"])
-}
+    type Query {
+      do(id: ID!): Task
+      getTask(id: ID!): Task
+      listTasks(first: Int, after: String): TaskConnection
+    }
 
-type Task {
-	id: ID!
-	name: String!
-	completed: Boolean!
-}
+    type Subscription {
+      onCreateTask(id: ID, name: String, completed: Boolean): Task
+        @aws_subscribe(mutations: ["createTask"])
+      onUpdateTask(id: ID, name: String, completed: Boolean): Task
+        @aws_subscribe(mutations: ["updateTask"])
+      onDeleteTask(id: ID, name: String, completed: Boolean): Task
+        @aws_subscribe(mutations: ["deleteTask"])
+    }
 
-type TaskConnection {
-	items: [Task]
-	nextToken: String
-}
+    type Task {
+      id: ID!
+      name: String!
+      completed: Boolean!
+    }
 
-input UpdateTaskInput {
-	id: ID!
-	name: String
-	completed: Boolean
-}
+    type TaskConnection {
+      items: [Task]
+      nextToken: String
+    }
+
+    input UpdateTaskInput {
+      id: ID!
+      name: String
+      completed: Boolean
+    }
 
 
 # 修改appSync.js文件为你自己的配置
 
-export default {
-  graphqlEndpoint: 'https://uezbpno7qngrbdtxzfuuuelfvu.appsync-api.us-east-2.amazonaws.com/graphql',
-  region: 'us-east-2',
-  authenticationType: 'API_KEY',
-  apiKey: 'da2-e7nqmnzl6ffqxhf32tav5crhz4',
-};
+    export default {
+      graphqlEndpoint: 'https://uezbpno7qngrbdtxzfuuuelfvu.appsync-api.us-east-2.amazonaws.com/graphql',
+      region: 'us-east-2',
+      authenticationType: 'API_KEY',
+      apiKey: 'da2-e7nqmnzl6ffqxhf32tav5crhz4',
+    };
