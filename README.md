@@ -1,22 +1,8 @@
-# msz
 
-> a app for rent
+# 安装依赖
+$ npm install
+# 运行
+$ npm run dev
 
-## Build Setup
+# 打开微信开发客户端，新建项目---> 打开dist目录！
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-# mpvue-aws-appsync
